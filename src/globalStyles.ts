@@ -16,7 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        background-color: ${cores.fundo}
+        background-color: ${cores.fundo}; 
     }
 
     .container {
