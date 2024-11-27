@@ -15,13 +15,12 @@ type Props = {
 
 export function HomeItens({produto, image, avaliacao, descricao, indicador}: Props) {
 
-    const indicação = ['destaque da semana', 'Japonesa']
     return (
         <S.HomeItensContainer>
             <div>
-            <img src="https://placehold.co/470x220" alt="" />
+            <img src={image} alt={produto} />
             <S.Indicadores>
-                {indicação.map((item, index) => (
+                {indicador.map((item, index) => (
                     <HomeButton
                         key={index}
                         children={item}
@@ -32,19 +31,20 @@ export function HomeItens({produto, image, avaliacao, descricao, indicador}: Pro
             
             <S.DescricaoContainer>
                 <S.NameConatiner>
-                    <h3>Nome do item</h3>
+                    <h3>{produto}</h3>
                     <S.Avaliacao>
-                        <p>4.9</p>
+                        <p>{avaliacao}</p>
                         <img src={star} alt="" />
                     </S.Avaliacao>
                 </S.NameConatiner>
                 <S.Descricao>
                         <p>
-                            Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!
+                            {descricao}
                         </p>
                 </S.Descricao>
                 <HomeButton 
-                    
+                    to={'/saiba-mais'}
+                    active
                     children='Saiba Mais'
                 />
             </S.DescricaoContainer>

@@ -8,10 +8,10 @@ export const HomeItensContainer = styled.div`
     color: ${cores.laranja};
     width: 470px;
     position: relative;
-` 
-export const DescricaoContainer = styled.div`
     border: 1px solid ${cores.laranja};
     border-top: none;
+` 
+export const DescricaoContainer = styled.div`
     padding: 8px;
 `
 export const NameConatiner = styled.div`

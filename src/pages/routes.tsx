@@ -1,6 +1,9 @@
+// Importação de Bibliotecas externas
 import { createBrowserRouter } from "react-router-dom";
+// Importação das paginas
 import Home from "./Home";
-import { HomeItens } from "../components/HomeItens";
+import Cart from "./Cart";
+import ItenCart from "../components/ItenCart";
 
 const router = createBrowserRouter([
     {
@@ -9,8 +12,12 @@ const router = createBrowserRouter([
         errorElement: <h1>Erro na pagina</h1>,
     },
     {
+        path: '/saiba-mais',
+        element: <Cart />,
+    },
+    {
         path: '/teste',
-        element: <HomeItens />
+        element: <ItenCart />,
     }
 ]);
 export default router;
