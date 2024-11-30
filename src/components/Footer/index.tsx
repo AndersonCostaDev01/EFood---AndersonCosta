@@ -5,6 +5,7 @@ import logo from '../../assets/logo.png'
 import Facbook from '../../assets/facebook.svg'
 import Instagram from '../../assets/instagram.svg'
 import x from '../../assets/x.svg'
+// COrreção do nome do arquivo
 
 export default function Footer() {
     return (
