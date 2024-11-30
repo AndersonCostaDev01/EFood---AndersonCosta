@@ -4,6 +4,7 @@ import * as S from './styles'
 import ItenCart from "../ItenCart";
 // importação de imagens
 import margerita from '../../assets/margerita.png'
+// COrreção do nome do arquivo
 
 const cardapioCart = [
     {
