@@ -5,7 +5,7 @@ import { HomeItens } from '../HomeItens'
 // importaçõao do tipo cardapio
 import Cardapio from '../../models/Cardapio'
 // IMpoortação de imagens
-import sushi from '../../assets/Sushi.png'
+import sushi from '../../assets/sushi.png'
 import macarao  from '../../assets/macarao.png'
 
  // Criação de variaveis para o componente
