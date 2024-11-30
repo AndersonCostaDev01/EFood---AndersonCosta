@@ -5,13 +5,13 @@ import * as S from './styles'
 type Props = {
     children: string
     active?: boolean
-    to?: string
+    to?: string | undefined
 }
 
 export default function HomeButton({children, active, to}: Props) {
     if (active) {
         return (
-            <S.HomeLink active={active} to={to}>{children}</S.HomeLink>
+            <S.HomeLink active={active} to={to!}>{children}</S.HomeLink>
         )
     } else {
         return (

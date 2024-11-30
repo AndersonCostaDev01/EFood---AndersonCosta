@@ -44,7 +44,7 @@ export default function ItensCart () {
             {cardapioCart.map((item, index) => (
                 <ItenCart
                     key={index}
-                    nome={item.name}
+                    name={item.name}
                     descricao={item.descricao}
                     img={item.img} />
             ))}
