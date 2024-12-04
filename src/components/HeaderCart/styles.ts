@@ -19,7 +19,26 @@ export const  Containerlogo = styled.div`
     font-size: 18px;
     font-weight: bold;
 `
-export const Img = styled.img`
+export const Img = styled.div`
     width: 100%;
+    height: 280px;
     object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 24px;
+    padding-bottom: 32px;
+    color: ${cores.branco};
+    font-size: 32px;
+    font-weight: 900;
+`
+export const ContainerImg = styled.div`
+    background-repeat: no-repeat;
+    background-size: cover;
+`
+export const  Italic = styled.h3`
+    font-weight: 100;
+    line-height: 37.5px;
+    font-size: 32px;
+    font-style: normal;
 `
