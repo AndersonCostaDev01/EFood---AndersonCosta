@@ -2,6 +2,7 @@
 import styled from "styled-components";
 // Importação das cores da aplicação
 import { cores } from "../../globalStyles";
+import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.div`
     display: block;
@@ -41,4 +42,10 @@ export const  Italic = styled.h3`
     line-height: 37.5px;
     font-size: 32px;
     font-style: normal;
+`
+export const HomeLink = styled(Link)`
+    color: ${cores.laranja};
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
 `

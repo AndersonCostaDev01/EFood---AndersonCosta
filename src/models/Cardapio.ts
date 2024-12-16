@@ -1,16 +1,18 @@
-class Cardapio {
+type Cardapio = {
+    id: number
+    titulo: string
+    destacado: boolean
+    tipo: string[]
     avaliacao: number
     descricao: string
-    imagem: string
-    produto: string
-    indicador: string[]
-
-    constructor(avaliacao: number, descricao: string, imagem: string, produto: string, indicador: string[]) {
-        this.avaliacao = avaliacao
-        this.descricao = descricao
-        this.imagem = imagem
-        this.produto = produto
-        this.indicador = indicador
+    capa: string
+    cardapio: {
+        foto: string
+        preco: number
+        id: number
+        nome: string
+        descricao: string
+        porcao: string
     }
 }
 export default Cardapio

@@ -14,7 +14,7 @@ export default function HeaderCart() {
             style={{backgroundImage: `url(${fundoHeader})`}}
         >
             <S.Containerlogo>
-                <h3>Restaurantes</h3>
+                <S.HomeLink to={'/'}>Restaurantes</S.HomeLink>
                 <Link to={'/'}><img src={logo} alt="Logo da Efood" /></Link>
                 <h3>0 produto(s) no carrinho</h3>
             </S.Containerlogo>
