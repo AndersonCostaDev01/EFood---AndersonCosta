@@ -10,6 +10,10 @@ export const HomeListContainer = styled.div`
     column-gap: 80px;
     margin-top: 80px;
     margin-bottom: 120px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 export const Carregando = styled.h4`
     text-align: center;

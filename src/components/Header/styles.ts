@@ -9,11 +9,19 @@ export const HeaderContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover; 
     font-weight: bold;
+
+    @media (max-width: 768px) {
+        height: 300px;
+    }
     
 `
 export const Logo = styled.div`
     text-align: center;
     padding-top: 60px;
+
+    @media (max-width: 768px) {
+        padding-top: 40px;
+    }
     
 `
 export const Titulo = styled.h2`
@@ -22,4 +30,9 @@ export const Titulo = styled.h2`
     font-size: 36px;
     font-weight: bold;
     margin-top: 138px;
+
+    @media (max-width: 768px) {
+        margin-top: 80px;
+        font-size: 24px;
+    }
 `

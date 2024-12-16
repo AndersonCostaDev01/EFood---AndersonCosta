@@ -10,6 +10,10 @@ export const HomeItensContainer = styled.div`
     position: relative;
     border: 1px solid ${cores.laranja};
     border-top: none;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 ` 
 export const DescricaoContainer = styled.div`
     padding: 8px;
@@ -58,5 +62,9 @@ export const ImageContainer = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
     }
 `
