@@ -1,78 +1,76 @@
-// importação de estilos do componente	
-import * as S from './styles'
+// importação de estilos do componente
+import * as S from './styles';
 // importação de componentes
-import ItenCart from "../ItenCart";
+import ItemCart from "../ItenCart";
 // importação de imagens
-import margerita from '../../assets/margerita.png'
-import close from '../../assets/close.svg'
-import { useState } from 'react';
-// COrreção do nome do arquivo
+import close from '../../assets/close.svg';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { formataPreco } from '../../models/formataPreco';
 
-const cardapioCart = [
-    {
-        img: margerita,
-        name: 'Pizza Margerita',
-        descricao: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-    },
-    {
-        img: margerita,
-        name: 'Pizza Margerita',
-        descricao: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-    },
-    {
-        img: margerita,
-        name: 'Pizza Margerita',
-        descricao: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-    },
-    {
-        img: margerita,
-        name: 'Pizza Margerita',
-        descricao: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-    },
-    {
-        img: margerita,
-        name: 'Pizza Margerita',
-        descricao: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-    },
-    {
-        img: margerita,
-        name: 'Pizza Margerita',
-        descricao: 'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-    },
-]
+// Tipos
+interface ItemCardapio {
+  id: number;
+  nome: string;
+  descricao: string;
+  foto: string;
+  preco: number;
+  porcao: string;
+}
 
-export default function ItensCart () {
-    const [modal, setModal] = useState(false)
-    return (
-        <S.ItensCartContainer>
-            {cardapioCart.map((item, index) => (
-                <ItenCart
-                    onClick={() => setModal(!modal)}
-                    key={index}
-                    name={item.name}
-                    descricao={item.descricao}
-                    img={item.img} />
-            ))}
+interface Restaurante {
+  cardapio: ItemCardapio[];
+}
 
-            <S.modalContainer className={modal ? 'isOpen' : ''}>
-                <S.modalContent>
-                    <S.CloseButton onClick={() => setModal(!modal)}>
-                            <img src={close} alt="Botão para fechar" />
-                    </S.CloseButton>
-                    <S.ModalDesciption>
-                        <S.ImgModal>
-                            <img src={margerita} alt="" />
-                        </S.ImgModal>
-                        <S.Description>
-                            <h3>Pizza Margerita</h3>
-                            <p> Spaghetti alla Carbonara é um clássico prato italiano, feito com massa spaghetti al dente, coberto com um molho rico e cremoso à base de ovos, queijo pecorino romano, pancetta e pimenta-do-reino. Um prato saboroso e reconfortante que leva você diretamente para a Itália.</p>
-                            <p>Serve de 2 a 4 pessoas</p>
-                            <S.ModalButton>adicionar ao carrinho - RS 29,90</S.ModalButton>
-                        </S.Description>
-                    </S.ModalDesciption>
-                </S.modalContent>
-                <S.Overlay onClick={() => setModal(!modal)}></S.Overlay>
-            </S.modalContainer>
-        </S.ItensCartContainer>
-    )
-} 
+export default function ItensCart() {
+  const { id } = useParams();
+  const [modal, setModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<ItemCardapio | null>(null);
+  const [cardapioCart, setCardapioCart] = useState<Restaurante | null>(null);
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((response) => response.json())
+      .then((data) => setCardapioCart(data));
+  }, [id]);
+
+  return (
+    <S.ItensCartContainer>
+      {cardapioCart &&
+        cardapioCart.cardapio.map((iten) => (
+          <ItemCart
+            key={iten.id}
+            img={iten.foto}
+            name={iten.nome}
+            descricao={iten.descricao}
+            onClick={() => {
+              setSelectedItem(iten);
+              setModal(true);
+            }}
+          />
+        ))}
+
+      <S.modalContainer className={modal ? 'isOpen' : ''}>
+        <S.modalContent>
+          <S.CloseButton onClick={() => setModal(false)}>
+            <img src={close} alt="Botão para fechar" />
+          </S.CloseButton>
+          {selectedItem && (
+            <S.ModalDesciption>
+              <S.ImgModal>
+                <img src={selectedItem.foto} alt={selectedItem.nome} />
+              </S.ImgModal>
+              <S.Description>
+                <h3>{selectedItem.nome}</h3>
+                <p>{selectedItem.descricao}</p>
+                <p>Serve: {selectedItem.porcao}</p>
+                <S.ModalButton>Adicionar ao carrinho - {formataPreco(selectedItem.preco)}</S.ModalButton>
+              </S.Description>
+            </S.ModalDesciption>
+          )}
+        </S.modalContent>
+        <S.Overlay onClick={() => setModal(false)}></S.Overlay>
+      </S.modalContainer>
+    </S.ItensCartContainer>
+  );
+}

@@ -10,6 +10,10 @@ export const ItensCartContainer = styled.div`
     column-gap: 32px;
     margin-top: 64px;
     margin-bottom: 120px;
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 export const modalContainer = styled.div`
     position: fixed;
@@ -35,6 +39,10 @@ export const modalContent = styled.div`
     max-width: 1024px;
     position: relative;
     z-index: 2;
+
+    @media (max-width: 768px) {
+        max-width: 80%;
+    }
 `
 export const CloseButton = styled.div`
     display: flex;
@@ -42,11 +50,22 @@ export const CloseButton = styled.div`
     border: none;  
     cursor: pointer;
     justify-content: flex-end;
+
+    @media (max-width: 768px) {
+        img {
+            width: 20px;
+            padding-bottom: 8px;
+        }
+    }
 `
 export const ModalDesciption = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 24px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `
 export const ImgModal = styled.div`
     img {
@@ -55,6 +74,13 @@ export const ImgModal = styled.div`
         object-fit: cover;
         flex-direction: column;
         justify-content: space-between;
+    }
+
+    @media (max-width: 768px) {
+        margin-right: 18px ;
+        img {
+            width: 100%;
+        }
     }
 `
 export const Description = styled.div`

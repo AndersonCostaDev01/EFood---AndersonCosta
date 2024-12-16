@@ -11,6 +11,8 @@ export const ItenCartContainer = styled.div`
 
     img {
         width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     h3 {
@@ -35,4 +37,11 @@ export const Button = styled.button`
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
+`
+
+export const ContainerImg = styled.div`
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: flex;
 `

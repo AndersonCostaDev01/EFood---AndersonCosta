@@ -19,6 +19,12 @@ export const  Containerlogo = styled.div`
     color: ${cores.laranja};
     font-size: 18px;
     font-weight: bold;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        padding: 40px 40px;
+        gap: 32px;
+    }
 `
 export const Img = styled.div`
     width: 100%;
@@ -32,10 +38,13 @@ export const Img = styled.div`
     color: ${cores.branco};
     font-size: 32px;
     font-weight: 900;
+    z-index: 2;
+    position: relative;
 `
 export const ContainerImg = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 `
 export const  Italic = styled.h3`
     font-weight: 100;
@@ -48,4 +57,13 @@ export const HomeLink = styled(Link)`
     font-size: 20px;
     font-weight: bold;
     text-decoration: none;
+`
+export const Overlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 `
