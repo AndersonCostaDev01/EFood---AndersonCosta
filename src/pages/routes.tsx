@@ -12,7 +12,7 @@ const router = createBrowserRouter([
         errorElement: <h1>Erro na pagina</h1>,
     },
     {
-        path: '/saiba-mais',
+        path: '/restaurante/:id',
         element: <Cart />,
     },
     {

@@ -43,7 +43,7 @@ export function HomeItens({produto, image, avaliacao, descricao, indicador}: Pro
                         </p>
                 </S.Descricao>
                 <HomeButton 
-                    to={'/saiba-mais'}
+                    to={'/restaurante/2'}
                     active
                     children='Saiba Mais'
                 />

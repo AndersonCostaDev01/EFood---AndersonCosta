@@ -5,15 +5,18 @@ type Props = {
     img?: string
     name?: string
     descricao?: string
+    onClick?: () => void
 }
 
-export default function ItenCart ({img, name, descricao}: Props) {
+export default function ItenCart ({img, name, descricao, onClick}: Props) {
     return (
-        <S.ItenCartContainer>
-            <img src={img} alt={name} />
-            <h3>{name}</h3>
-            <p>{descricao}</p>
-            <S.Button>adicionar ao carrinho</S.Button>
-        </S.ItenCartContainer>
+        <>
+            <S.ItenCartContainer onClick={onClick}>
+                <img src={img} alt={name} />
+                <h3>{name}</h3>
+                <p>{descricao}</p>
+                <S.Button>adicionar ao carrinho</S.Button>
+            </S.ItenCartContainer>
+        </>
     )
 }
