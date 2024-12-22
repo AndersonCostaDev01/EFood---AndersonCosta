@@ -6,17 +6,15 @@ import * as S from './styles'
 // Importação de imagens
 import fundoHeader from '../../assets/fundoHeader.png'
 import logo from '../../assets/logo.png'
-import { useState } from 'react'
-import Cardapio from '../../models/Cardapio'
+// Importação dos endpoints
+import { useGetRestauranteQuery } from '../../services/api'
 
 export default function HeaderCart() {
-    const [restaurante, setRestaurante] = useState<Cardapio>()
     const {id} = useParams();
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-    .then(response => response.json())
-    .then(data => {
-        setRestaurante(data)
-    })
+
+    // endpoint de restaurante
+    const {data: restaurante} = useGetRestauranteQuery(id!);
+
     return (
         <S.HeaderContainer
             style={{backgroundImage: `url(${fundoHeader})`}}

@@ -4,9 +4,11 @@ import * as S from './styles';
 import ItemCart from "../ItenCart";
 // importação de imagens
 import close from '../../assets/close.svg';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { formataPreco } from '../../models/formataPreco';
+// importação dos endpoints
+import { useGetRestauranteQuery } from '../../services/api';
 
 // Tipos
 interface ItemCardapio {
@@ -18,24 +20,16 @@ interface ItemCardapio {
   porcao: string;
 }
 
-interface Restaurante {
-  cardapio: ItemCardapio[];
-}
-
 export default function ItensCart() {
   const { id } = useParams();
   const [modal, setModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState<ItemCardapio | null>(null);
-  const [cardapioCart, setCardapioCart] = useState<Restaurante | null>(null);
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((response) => response.json())
-      .then((data) => setCardapioCart(data));
-  }, [id]);
+  // endepoint de restaurante
+  const {data: cardapioCart} = useGetRestauranteQuery(id!);
 
   return (
     <S.ItensCartContainer>
+     
       {cardapioCart &&
         cardapioCart.cardapio.map((iten) => (
           <ItemCart

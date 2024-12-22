@@ -15,12 +15,17 @@ const api = createApi({
         getCardapio: builder.query<Cardapio[], void>({
             query: () => `/restaurantes`,
         }),
+        // endpoint de restaurante
+        getRestaurante: builder.query<Cardapio, string>({
+            query: (id) => `/restaurantes/${id}`,
+        })
     })
 })
 
 // exportação dos endpoints
 export const {
-    useGetCardapioQuery
+    useGetCardapioQuery,
+    useGetRestauranteQuery
 } = api
 
 export default api

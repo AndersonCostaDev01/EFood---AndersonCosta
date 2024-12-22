@@ -38,7 +38,7 @@ export const modalContent = styled.div`
     padding-bottom: 32px;
     max-width: 1024px;
     position: relative;
-    z-index: 2;
+    z-index: 10;
 
     @media (max-width: 768px) {
         max-width: 80%;
@@ -62,6 +62,8 @@ export const ModalDesciption = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 24px;
+    position: relative;
+    z-index: 10;
 
     @media (max-width: 768px) {
         flex-direction: column;
@@ -105,11 +107,11 @@ export const ModalButton = styled.button`
     font-size: 14px;
 `
 export const Overlay = styled.div`
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: 2;
 `

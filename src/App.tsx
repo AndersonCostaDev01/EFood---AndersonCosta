@@ -6,14 +6,16 @@ import { GlobalStyles } from "./globalStyles"
 
 // Importação das rotas do sistema 
 import router from "./pages/routes"
+import { Provider } from "react-redux"
+import store from "./store"
 
 function App() {
 
   return (
-    <>
-    <GlobalStyles />
-    <RouterProvider router={router} />
-    </>
+    <Provider store={store}>
+      <GlobalStyles />
+      <RouterProvider router={router} />
+    </Provider>
   )
 }
 

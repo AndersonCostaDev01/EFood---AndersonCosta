@@ -2,20 +2,16 @@
 import * as S from './styles'
 // Importação de componentes
 import { HomeItens } from '../HomeItens'
-// importaçõao do tipo cardapio
-import Cardapio from '../../models/Cardapio'
-// IMpoortação de imagens
-import { useState } from 'react'
+// Importação dos endpoints
+import { useGetCardapioQuery } from '../../services/api'
 
 // Criação de typo cardapio
 
 export function HomeList() {
-    const [itens, setItens] = useState<Cardapio[]>()
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-    .then(response => response.json())
-    .then(data => {
-        setItens(data)
-    })
+    
+
+    const {data: itens} = useGetCardapioQuery()
+
     if (!itens) {
         return <S.Carregando>Carregando...</S.Carregando>
     }

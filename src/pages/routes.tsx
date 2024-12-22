@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 // Importação das paginas
 import Home from "./Home";
 import Cart from "./Cart";
-import ItenCart from "../components/ItenCart";
+import Teste from "../components/Teste";
 
 const router = createBrowserRouter([
     {
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/teste',
-        element: <ItenCart />,
+        element: <Teste />,
     }
 ]);
 export default router;
