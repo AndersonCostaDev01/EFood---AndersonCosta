@@ -20,6 +20,10 @@ export const CartContainer = styled.div`
     padding: 8px;
     overflow-y: scroll;
 
+    @media (max-width: 768px) {
+        width: 70%;
+    }
+
     &::-webkit-scrollbar{
         display: none;
     }
