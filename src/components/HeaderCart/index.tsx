@@ -8,13 +8,18 @@ import fundoHeader from '../../assets/fundoHeader.png'
 import logo from '../../assets/logo.png'
 // Importação dos endpoints
 import { useGetRestauranteQuery } from '../../services/api'
+import { useDispatch, useSelector } from 'react-redux'
+import { open } from '../../store/reducers/Cart'
+import { RootState } from '../../store'
 
 export default function HeaderCart() {
     const {id} = useParams();
+    const dispatch = useDispatch()
+    const abreCart = () => dispatch(open())
+    const {itens} = useSelector((state: RootState) => state.cart)
 
     // endpoint de restaurante
     const {data: restaurante} = useGetRestauranteQuery(id!);
-
     return (
         <S.HeaderContainer
             style={{backgroundImage: `url(${fundoHeader})`}}
@@ -22,7 +27,7 @@ export default function HeaderCart() {
             <S.Containerlogo>
                 <S.HomeLink to={'/'}>Restaurantes</S.HomeLink>
                 <Link to={'/'}><img src={logo} alt="Logo da Efood" /></Link>
-                <h3>0 produto(s) no carrinho</h3>
+                <S.Cart onClick={abreCart}>{itens.length} produto(s) no carrinho</S.Cart>
             </S.Containerlogo>
             <S.ContainerImg 
                 style={{backgroundImage: `url(${restaurante?.capa})`}}>

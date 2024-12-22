@@ -67,3 +67,10 @@ export const Overlay = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 `
+export const Cart = styled.h3`
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+`

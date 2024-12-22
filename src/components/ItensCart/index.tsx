@@ -1,3 +1,5 @@
+// importação de bibliotecas externas
+import { useDispatch } from 'react-redux';
 // importação de estilos do componente
 import * as S from './styles';
 // importação de componentes
@@ -9,23 +11,20 @@ import { useParams } from 'react-router-dom';
 import { formataPreco } from '../../models/formataPreco';
 // importação dos endpoints
 import { useGetRestauranteQuery } from '../../services/api';
+// importação das actions
+import { add } from '../../store/reducers/Cart';
+import { CardapioIten } from '../../models/Cardapio';
 
-// Tipos
-interface ItemCardapio {
-  id: number;
-  nome: string;
-  descricao: string;
-  foto: string;
-  preco: number;
-  porcao: string;
-}
+
 
 export default function ItensCart() {
   const { id } = useParams();
   const [modal, setModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<ItemCardapio | null>(null);
+  const [selectedItem, setSelectedItem] = useState<CardapioIten | null>(null);
   // endepoint de restaurante
   const {data: cardapioCart} = useGetRestauranteQuery(id!);
+  const dispatch = useDispatch()
+  const addCart = (action: CardapioIten) => dispatch(add(action))
 
   return (
     <S.ItensCartContainer>
@@ -58,7 +57,11 @@ export default function ItensCart() {
                 <h3>{selectedItem.nome}</h3>
                 <p>{selectedItem.descricao}</p>
                 <p>Serve: {selectedItem.porcao}</p>
-                <S.ModalButton>Adicionar ao carrinho - {formataPreco(selectedItem.preco)}</S.ModalButton>
+                <S.ModalButton
+                  onClick={(() => addCart(selectedItem))}
+                >
+                  Adicionar ao carrinho - {formataPreco(selectedItem.preco)}
+                </S.ModalButton>
               </S.Description>
             </S.ModalDesciption>
           )}

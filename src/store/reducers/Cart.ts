@@ -1,11 +1,11 @@
 // importação de bibliotecas externas
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // importação do tipo do cardapio
-import Cardapio from "../../models/Cardapio";
+import  { CardapioIten } from "../../models/Cardapio";
 
 // define os tipos do estado
 type initialState = {
-    itens: Cardapio[]
+    itens: CardapioIten[]
     isOpen: boolean
 }
 // define os estados iniciais do carrinho
@@ -28,19 +28,13 @@ export const cartSlice = createSlice({
         },
 
         // adiona um item ao carrinho
-        add: (state, action: PayloadAction<Cardapio>) => {
-        const prato = state.itens.find((item) => item.id === action.payload.id)
-            if (!prato) {
-                state.itens.push(action.payload)
-            } else {
-                state.itens.push(action.payload)
-                alert('Mais um prato do mesmo tipo foi adicionado ao carrinho!')
-            }
+        add: (state, action: PayloadAction<CardapioIten>) => {
+            state.itens.push(action.payload)
         },
         // remove um item do carrinho
         remove: (state, action: PayloadAction<number>) => {
             state.itens = state.itens.filter((item) => item.id !== action.payload)
-        }
+        },
     }
 })
 

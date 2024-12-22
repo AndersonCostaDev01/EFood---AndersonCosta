@@ -23,7 +23,9 @@ export default function ItenCart ({img, name, descricao, onClick}: Props) {
                 </S.ContainerImg>
                 <h3>{name}</h3>
                 <p>{descricao && getDescricao(descricao)}</p>
-                <S.Button>adicionar ao carrinho</S.Button>
+                <S.Button>
+                    adicionar ao carrinho
+                </S.Button>
             </S.ItenCartContainer>
         </>
     )
