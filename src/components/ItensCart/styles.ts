@@ -38,7 +38,7 @@ export const modalContent = styled.div`
     padding-bottom: 32px;
     max-width: 1024px;
     position: relative;
-    z-index: 10;
+    z-index: 100;
 
     @media (max-width: 768px) {
         max-width: 80%;
@@ -113,5 +113,5 @@ export const Overlay = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 2;
+    z-index: 99;
 `

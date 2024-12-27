@@ -29,7 +29,9 @@ export const cartSlice = createSlice({
 
         // adiona um item ao carrinho
         add: (state, action: PayloadAction<CardapioIten>) => {
-            state.itens.push(action.payload)
+            const geraId = state.itens.length > 0 ? state.itens[state.itens.length - 1].id + 1 : 1
+            state.itens.push({...action.payload, id: geraId})
+            
         },
         // remove um item do carrinho
         remove: (state, action: PayloadAction<number>) => {

@@ -38,13 +38,15 @@ export const Img = styled.div`
     color: ${cores.branco};
     font-size: 32px;
     font-weight: 900;
-    z-index: 2;
+    z-index: 0;
     position: relative;
 `
 export const ContainerImg = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    z-index: 0;
+    
 `
 export const  Italic = styled.h3`
     font-weight: 100;
@@ -65,7 +67,7 @@ export const Overlay = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    z-index: -1;
 `
 export const Cart = styled.h3`
     cursor: pointer;
