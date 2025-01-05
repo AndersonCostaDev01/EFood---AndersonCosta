@@ -4,6 +4,7 @@ import * as S from './styles'
 import { HomeItens } from '../HomeItens'
 // Importação dos endpoints
 import { useGetCardapioQuery } from '../../services/api'
+import Loader from '../Loader'
 
 // Criação de typo cardapio
 
@@ -13,7 +14,7 @@ export function HomeList() {
     const {data: itens} = useGetCardapioQuery()
 
     if (!itens) {
-        return <S.Carregando>Carregando...</S.Carregando>
+        return <Loader />
     }
     return (
         <div className="container">

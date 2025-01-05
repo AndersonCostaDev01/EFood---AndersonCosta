@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import * as S from './styles';
 // importação de componentes
 import ItemCart from "../ItenCart";
+import Loader from '../Loader';
 // importação de imagens
 import close from '../../assets/close.svg';
 import { useState } from 'react';
@@ -26,6 +27,9 @@ export default function ItensCart() {
   const dispatch = useDispatch()
   const addCart = (action: CardapioIten) => dispatch(add(action))
 
+  if (!cardapioCart) {
+    return <Loader />
+  }
   return (
     <S.ItensCartContainer>
      
