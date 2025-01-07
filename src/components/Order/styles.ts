@@ -45,6 +45,7 @@ export const LabelContainer = styled.div<LabelProps>`
   width: ${props => props.width ? props.width : '100%' };
   gap: 8px;
   margin-bottom: 8px;
+  position: relative;
 
   label {
     font-size: 14px;
@@ -58,9 +59,24 @@ export const LabelContainer = styled.div<LabelProps>`
     padding-left: 4px;
     width: 100%;
     background-color: ${cores.bege};
-    border: none;
+    border: 2px solid ${cores.bege};
     height: 32px;
+
+    &.error {
+      border: 2px solid #FF4500 ;
+      border-radius: 4px;
+    }
   }
+`
+export const ErrorMessage = styled.small`
+    background-color: 	#FF4500;
+    color: ${cores.fundo};
+    font-size: 10px;
+    position: absolute;
+    top: 18px;
+    left: 15px;
+    border-radius: 4px;
+    padding: 3px;
 `
 export const OrderButton = styled.button`
   background-color: ${cores.bege};
@@ -78,4 +94,10 @@ export const OrderButton = styled.button`
   &.marginTop{
     margin-top: 32px;
   }
+`
+export const OrderDescription = styled.p`
+  font-size: 14px;
+  line-height: 22px;
+  color: ${cores.bege};
+  margin-bottom: 16px;
 `

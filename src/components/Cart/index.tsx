@@ -17,12 +17,18 @@ const CartSection = () => {
     const closeCart = () => dispatch(close())
     // remove um item do carrinho
     const removeItem = (id: number) => dispatch(remove(id))
-    // Abre pedido
-    const abrirPedido = () => dispatch(openOrder()) // fazer consicional para ver se o carrinho esta vazio
+    // Abre pedido se tiver itens no carrinho, caso contrario abre um alerta de carrinho vazio
+    const abrirPedido = () => {
+      if (itens.length > 0) {
+        dispatch(openOrder())
+      } else{
+        closeCart()
+        alert('Seu carrinho esta vazio')
+      }
+    }
 
     return (
         <S.CartGlobalContainer className={isOpen ? 'isOpen' : ''}>
-            {/*  */}
             {isOrder ? (<Order />) : (
                 <S.CartContainer>
                 {itens.map((iten) => (
@@ -44,8 +50,6 @@ const CartSection = () => {
                 <S.Button onClick={() => abrirPedido()}>Continuar com a entrega</S.Button>
                 </S.CartContainer>
             )}
-            {/*  */}
-
             <S.Overlay onClick={closeCart}/>
         </S.CartGlobalContainer>
     )

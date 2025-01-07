@@ -47,7 +47,7 @@ export const CartContent = styled.div`
 export const CartDescribe = styled.div`
     color: ${cores.laranja};
     margin-left: 8px;
-    
+
     h4 {
         margin-bottom: 16px;
     }
@@ -91,4 +91,5 @@ export const Button = styled.button`
     width: 100%;
     height: 24px;
     border: 8px;
+    margin-bottom: 28px;
 `
